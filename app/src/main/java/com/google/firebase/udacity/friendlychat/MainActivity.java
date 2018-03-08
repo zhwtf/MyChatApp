@@ -216,7 +216,8 @@ public class MainActivity extends AppCompatActivity {
                 // Sign in was canceled by the user, finish the activity
                 Toast.makeText(this, "Sign in canceled", Toast.LENGTH_SHORT).show();
                 finish();
-            } else if (requestCode == RC_PHOTO_PICKER && resultCode == RESULT_OK) {
+            }
+        } else if (requestCode == RC_PHOTO_PICKER && resultCode == RESULT_OK) {
                 Uri selectedImageUri = data.getData();
 
                 // Get a reference to store file at chat_photos/<FILENAME>
@@ -236,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
                         mMessagesDatabaseReference.push().setValue(friendlyMessage);
                     }
                 });
-            }
+
         }
     }
 
