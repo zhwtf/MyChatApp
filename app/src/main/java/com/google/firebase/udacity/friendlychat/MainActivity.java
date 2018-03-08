@@ -188,7 +188,8 @@ public class MainActivity extends AppCompatActivity {
                     //Toast.makeText(MainActivity.this, "You're now signed in. Welcome to FriendlyChat.", Toast.LENGTH_SHORT).show();
                     onSignedInInitialize(user.getDisplayName());
                 } else {
-                    // User is singed out
+                    // User is signed out
+                    // Then we need to sign in
                     onSignedOutCleanup();
                     startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder()
                     .setIsSmartLockEnabled(false)
@@ -219,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
                 Uri selectedImageUri = data.getData();
 
                 // Get a reference to store file at chat_photos/<FILENAME>
+                // eg content://local_images/foo/4  -> 4
                 StorageReference photoRef = mChatPhotosStorageReference.child(selectedImageUri.getLastPathSegment());
 
                 // Upload file to Firebase Storage
